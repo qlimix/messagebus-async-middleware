@@ -5,9 +5,9 @@ namespace Qlimix\MessageBus\Queue\Envelope;
 use Qlimix\Queue\Envelope\EnvelopeInterface;
 use Qlimix\Serializable\SerializableInterface;
 
-final class MessageBusEnvelope implements EnvelopeInterface
+final class AsyncEnvelope implements EnvelopeInterface
 {
-    private const ROUTE = 'qlimix.messagebus.queue.envelope';
+    private const ROUTE = 'qlimix.messagebus.queue.async';
 
     /** @var SerializableInterface */
     private $message;

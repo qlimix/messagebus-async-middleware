@@ -5,7 +5,7 @@ namespace Qlimix\MessageBus\MessageBus\Middleware;
 use Qlimix\Id\Generator\UUID\UUID4Generator;
 use Qlimix\MessageBus\Message\AsynchronousMessage;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
-use Qlimix\MessageBus\Queue\Envelope\MessageBusEnvelope;
+use Qlimix\MessageBus\Queue\Envelope\AsyncEnvelope;
 use Qlimix\MessageBus\Queue\Message\AsyncMessage;
 use Qlimix\Queue\Producer\ProducerInterface;
 
@@ -34,7 +34,7 @@ final class AsynchronousMiddleware implements MiddlewareInterface
     {
         if ($message instanceof AsynchronousMessage) {
            try {
-               $this->producer->publish(new MessageBusEnvelope(
+               $this->producer->publish(new AsyncEnvelope(
                    new AsyncMessage(
                        $this->uuid4Generator->generate()->getUuid4(),
                        $message->getMessage()->serialize()
