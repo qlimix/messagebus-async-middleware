@@ -19,8 +19,7 @@
         "qlimix/messagebus": "dev-master",
         "qlimix/serialize": "dev-master",
         "qlimix/queue": "dev-master",
-        "qlimix/uuid": "dev-master",
-        "ext-json": "*"
+        "qlimix/uuid": "dev-master"
     },
     "config": {
         "sort-packages": true
