@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "qlimix/messagebus": "dev-master",
-        "qlimix/serialize": "dev-master",
+        "qlimix/serializable": "dev-master",
         "qlimix/queue": "dev-master",
         "qlimix/uuid": "dev-master"
     },
@@ -41,7 +41,7 @@
         },
         {
             "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/serialize.git"
+            "url":  "git@bitbucket.org:qlimix/serializable.git"
         }
     ]
 }

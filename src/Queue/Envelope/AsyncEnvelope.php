@@ -3,7 +3,7 @@
 namespace Qlimix\MessageBus\Queue\Envelope;
 
 use Qlimix\Queue\Envelope\EnvelopeInterface;
-use Qlimix\Serialize\SerializableInterface;
+use Qlimix\Serializable\SerializableInterface;
 
 final class AsyncEnvelope implements EnvelopeInterface
 {
@@ -13,10 +13,6 @@ final class AsyncEnvelope implements EnvelopeInterface
     /** @var SerializableInterface */
     private $message;
 
-    /**
-     * @param string $route
-     * @param SerializableInterface $message
-     */
     public function __construct(string $route, SerializableInterface $message)
     {
         $this->route = $route;
@@ -24,7 +20,7 @@ final class AsyncEnvelope implements EnvelopeInterface
     }
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function getRoute(): string
     {

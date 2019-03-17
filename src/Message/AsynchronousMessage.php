@@ -2,7 +2,7 @@
 
 namespace Qlimix\MessageBus\Message;
 
-use Qlimix\Serialize\SerializableInterface;
+use Qlimix\Serializable\SerializableInterface;
 
 final class AsynchronousMessage
 {
@@ -12,27 +12,17 @@ final class AsynchronousMessage
     /** @var SerializableInterface */
     private $message;
 
-    /**
-     * @param string $id
-     * @param SerializableInterface $message
-     */
     public function __construct(string $id, SerializableInterface $message)
     {
         $this->id = $id;
         $this->message = $message;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return SerializableInterface
-     */
     public function getMessage(): SerializableInterface
     {
         return $this->message;
