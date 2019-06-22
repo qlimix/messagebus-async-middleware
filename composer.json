@@ -1,47 +1,35 @@
 {
     "name": "qlimix/messagebus-async-middleware",
-    "type": "package",
-    "license": "LGPL-3.0-only",
+    "type": "library",
+    "description": "Asynchronous handling of message via messagebus middleware",
+    "license": "MIT",
     "authors": [
         {
             "name": "frank",
             "email": "frank@qlimix.net"
         }
     ],
+    "require": {
+        "php": ">=7.2",
+        "qlimix/messagebus": "^1.0",
+        "qlimix/queue": "^1.0",
+        "qlimix/serializable": "^1.0",
+        "qlimix/uuid": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Qlimix\\MessageBus\\": "src/"
         }
     },
-    "require": {
-    },
-    "require-dev": {
-        "qlimix/messagebus": "dev-master",
-        "qlimix/serializable": "dev-master",
-        "qlimix/queue": "dev-master",
-        "qlimix/uuid": "dev-master"
+    "autoload-dev": {
+        "psr-4": {
+            "Qlimix\\Tests\\MessageBus\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": true
     },
-    "suggest": {
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/messagebus.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/queue.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/uuid.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:qlimix/serializable.git"
-        }
-    ]
+    "require-dev": {
+        "qlimix/code-standard": "^1.0"
+    }
 }

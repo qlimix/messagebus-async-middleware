@@ -2,10 +2,10 @@
 
 namespace Qlimix\MessageBus\MessageBus\Middleware;
 
-use Qlimix\MessageBus\Message\AsynchronousMessage;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 use Qlimix\MessageBus\Queue\Envelope\AsyncEnvelope;
 use Qlimix\Queue\Producer\ProducerInterface;
+use Qlimix\Serializable\SerializableInterface;
 use Throwable;
 
 final class AsynchronousMiddleware implements MiddlewareInterface
@@ -24,19 +24,18 @@ final class AsynchronousMiddleware implements MiddlewareInterface
 
     /**
      * @inheritDoc
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      */
     public function handle($message, MiddlewareHandlerInterface $handler): void
     {
-        if ($message instanceof AsynchronousMessage) {
-           try {
-               $this->producer->publish(new AsyncEnvelope($this->route, $message->getMessage()));
-           } catch (Throwable $exception) {
-               throw new MiddlewareException('Could not handle message asynchronous', 0, $exception);
-           }
-
-           return;
+        if (!$message instanceof SerializableInterface) {
+            throw new MiddlewareException('Forced async has to be an serializable message');
         }
 
-        $handler->next($message, $handler);
+        try {
+            $this->producer->publish(new AsyncEnvelope($this->route, $message));
+        } catch (Throwable $exception) {
+            throw new MiddlewareException('Could not handle message asynchronous', 0, $exception);
+        }
     }
 }
