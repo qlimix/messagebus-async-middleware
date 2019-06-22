@@ -3,10 +3,10 @@
 namespace Qlimix\Tests\MessageBus\Queue\Envelope;
 
 use PHPUnit\Framework\TestCase;
-use Qlimix\MessageBus\Queue\Envelope\AsyncEnvelope;
+use Qlimix\MessageBus\Queue\Envelope\AsynchronousEnvelope;
 use Qlimix\Serializable\SerializableInterface;
 
-final class AsyncEnvelopeTest extends TestCase
+final class AsynchronousEnvelopeTest extends TestCase
 {
     /**
      * @test
@@ -15,12 +15,8 @@ final class AsyncEnvelopeTest extends TestCase
     {
         $route = 'foo';
         $message = new class implements SerializableInterface {
-
-            /** @var string  */
-            private $foo = 'bar';
             public function getName(): string
             {
-                return 'foobar';
             }
 
             public function serialize(): array
@@ -32,7 +28,7 @@ final class AsyncEnvelopeTest extends TestCase
             }
         };
 
-        $asyncEnvelope = new AsyncEnvelope($route, $message);
+        $asyncEnvelope = new AsynchronousEnvelope($route, $message);
 
         $this->assertSame($route, $asyncEnvelope->getRoute());
         $this->assertSame($message, $asyncEnvelope->getMessage());

@@ -5,7 +5,7 @@ namespace Qlimix\MessageBus\Queue\Envelope;
 use Qlimix\Queue\Envelope\EnvelopeInterface;
 use Qlimix\Serializable\SerializableInterface;
 
-final class AsyncEnvelope implements EnvelopeInterface
+final class AsynchronousEnvelope implements EnvelopeInterface
 {
     /** @var string */
     private $route;

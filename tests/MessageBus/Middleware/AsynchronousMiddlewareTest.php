@@ -58,13 +58,13 @@ final class AsynchronousMiddlewareTest extends TestCase
     public function shouldThrowOnDispatchFailure(): void
     {
         $this->producer->expects($this->once())
-            ->method('produce')
+            ->method('publish')
             ->willThrowException(new ProducerException());
 
         $this->expectException(MiddlewareException::class);
 
         $this->asyncMiddleware->handle(
-            'foobar',
+            $this->createMock(SerializableInterface::class),
             $this->createMock(MiddlewareHandlerInterface::class)
         );
     }

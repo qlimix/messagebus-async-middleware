@@ -3,7 +3,7 @@
 namespace Qlimix\MessageBus\MessageBus\Middleware;
 
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
-use Qlimix\MessageBus\Queue\Envelope\AsyncEnvelope;
+use Qlimix\MessageBus\Queue\Envelope\AsynchronousEnvelope;
 use Qlimix\Queue\Producer\ProducerInterface;
 use Qlimix\Serializable\SerializableInterface;
 use Throwable;
@@ -33,7 +33,7 @@ final class AsynchronousMiddleware implements MiddlewareInterface
         }
 
         try {
-            $this->producer->publish(new AsyncEnvelope($this->route, $message));
+            $this->producer->publish(new AsynchronousEnvelope($this->route, $message));
         } catch (Throwable $exception) {
             throw new MiddlewareException('Could not handle message asynchronous', 0, $exception);
         }
