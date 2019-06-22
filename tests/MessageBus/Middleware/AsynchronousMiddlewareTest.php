@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Qlimix\MessageBus\MessageBus\Middleware\AsynchronousMiddleware;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
+use Qlimix\Queue\Producer\Exception\ProducerException;
 use Qlimix\Queue\Producer\ProducerInterface;
 use Qlimix\Serializable\SerializableInterface;
 
@@ -43,6 +44,23 @@ final class AsynchronousMiddlewareTest extends TestCase
      */
     public function shouldThrowOnNoneSerializable(): void
     {
+        $this->expectException(MiddlewareException::class);
+
+        $this->asyncMiddleware->handle(
+            'foobar',
+            $this->createMock(MiddlewareHandlerInterface::class)
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function shouldThrowOnDispatchFailure(): void
+    {
+        $this->producer->expects($this->once())
+            ->method('produce')
+            ->willThrowException(new ProducerException());
+
         $this->expectException(MiddlewareException::class);
 
         $this->asyncMiddleware->handle(
