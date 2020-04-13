@@ -10,11 +10,13 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "qlimix/messagebus": "^1.0",
+        "php": ">=7.4",
+        "qlimix/messagebus": "^2.0",
         "qlimix/queue": "^1.0",
-        "qlimix/serializable": "^1.0",
-        "qlimix/uuid": "^1.0"
+        "qlimix/serializable": "^1.0"
+    },
+    "require-dev": {
+        "qlimix/code-standard": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -28,8 +30,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "require-dev": {
-        "qlimix/code-standard": "^1.0"
     }
 }
