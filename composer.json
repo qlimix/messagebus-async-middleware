@@ -12,7 +12,7 @@
     "require": {
         "php": ">=7.4",
         "qlimix/messagebus": "^2.0",
-        "qlimix/queue": "^1.0",
+        "qlimix/queue": "^2.0",
         "qlimix/serializable": "^1.0"
     },
     "require-dev": {
