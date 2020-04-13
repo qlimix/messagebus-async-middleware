@@ -10,11 +10,9 @@ use Throwable;
 
 final class AsynchronousMiddleware implements MiddlewareInterface
 {
-    /** @var ProducerInterface */
-    private $producer;
+    private ProducerInterface $producer;
 
-    /** @var string */
-    private $route;
+    private string $route;
 
     public function __construct(ProducerInterface $producer, string $route)
     {
@@ -29,7 +27,7 @@ final class AsynchronousMiddleware implements MiddlewareInterface
     public function handle($message, MiddlewareHandlerInterface $handler): void
     {
         if (!$message instanceof SerializableInterface) {
-            throw new MiddlewareException('Forced async has to be an serializable message');
+            throw new MiddlewareException('An async message has to be an serializable message');
         }
 
         try {
