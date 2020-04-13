@@ -7,11 +7,9 @@ use Qlimix\Serializable\SerializableInterface;
 
 final class AsynchronousEnvelope implements EnvelopeInterface
 {
-    /** @var string */
-    private $route;
+    private string $route;
 
-    /** @var SerializableInterface */
-    private $message;
+    private SerializableInterface $message;
 
     public function __construct(string $route, SerializableInterface $message)
     {
