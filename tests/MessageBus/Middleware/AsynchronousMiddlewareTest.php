@@ -13,11 +13,9 @@ use Qlimix\Serializable\SerializableInterface;
 
 final class AsynchronousMiddlewareTest extends TestCase
 {
-    /** @var MockObject */
-    private $producer;
+    private MockObject $producer;
 
-    /** @var AsynchronousMiddleware */
-    private $asyncMiddleware;
+    private AsynchronousMiddleware $asyncMiddleware;
 
     protected function setUp(): void
     {
@@ -25,10 +23,7 @@ final class AsynchronousMiddlewareTest extends TestCase
         $this->asyncMiddleware = new AsynchronousMiddleware($this->producer, 'foo');
     }
 
-    /**
-     * @test
-     */
-    public function shouldHandleAsynchronous(): void
+    public function testShouldHandleAsynchronous(): void
     {
         $this->producer->expects($this->once())
             ->method('publish');
@@ -39,10 +34,7 @@ final class AsynchronousMiddlewareTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrowOnNoneSerializable(): void
+    public function testShouldThrowOnNoneSerializable(): void
     {
         $this->expectException(MiddlewareException::class);
 
@@ -52,10 +44,7 @@ final class AsynchronousMiddlewareTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrowOnDispatchFailure(): void
+    public function testShouldThrowOnDispatchFailure(): void
     {
         $this->producer->expects($this->once())
             ->method('publish')

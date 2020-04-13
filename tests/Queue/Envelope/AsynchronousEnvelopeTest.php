@@ -8,10 +8,7 @@ use Qlimix\Serializable\SerializableInterface;
 
 final class AsynchronousEnvelopeTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldDto(): void
+    public function testShouldDto(): void
     {
         $route = 'foo';
         $message = new class implements SerializableInterface {
