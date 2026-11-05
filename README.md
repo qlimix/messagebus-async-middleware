@@ -1,5 +1,7 @@
 # Messagebus-async-middleware
 
+> **Archived:** this package is no longer maintained.
+
 [![Travis CI](https://api.travis-ci.org/qlimix/messagebus-async-middleware.svg?branch=master)](https://travis-ci.org/qlimix/messagebus-async-middleware)
 [![Coveralls](https://img.shields.io/coveralls/github/qlimix/messagebus-async-middleware.svg)](https://coveralls.io/github/qlimix/messagebus-async-middleware)
 [![Packagist](https://img.shields.io/packagist/v/qlimix/messagebus-async-middleware.svg)](https://packagist.org/packages/qlimix/messagebus-async-middleware)
